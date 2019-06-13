@@ -47,3 +47,7 @@ ctaImg.setAttribute('src', siteContent["cta"]["img-src"])
 
 let middleImg = document.getElementById("middle-img");
 middleImg.setAttribute('src', siteContent["main-content"]["middle-img-src"])
+
+// Headers
+let domText = document.querySelector(".cta-text h1")
+domText.textContent = "DOM Is Awesome";
