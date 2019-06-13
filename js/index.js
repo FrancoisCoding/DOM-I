@@ -91,11 +91,23 @@ const button = document.querySelector("button");
 button.textContent = siteContent["cta"]["button"]
 
 // Append & Prepend
-//const extraText = document.createElement("h1")
-//extraText.textContent = "Extra Header"
-//extraText.style.color = "green"
-const extraText2 = document.createElement("h1")
-extraText2.textContent = "Extra Header2"
+const navElement = document.getElementsByTagName("nav");
+
+// (iName) recives the nav bar item name
+let createNode = iName => {
+	const newNavItem = document.createElement("a");
+	newNavItem.innerHTML = iName;
+	
+	return newNavItem
+}
+
+navElement[0].prepend(createNode("extraText"));
+navElement[0].appendChild(createNode("extraText2"));
+
+const extraText = document.createElement("a")
+extraText.textContent = "Extra Link"
+extraText.style.color = "green"
+const extraText2 = document.createElement("a")
+extraText2.textContent = "Extra Link2"
 extraText2.style.color = "green"
-const ctaClass = document.getElementsByClassName("cta")
-ctaClass.appendChild(extraText2)
+console.log(navElement);
