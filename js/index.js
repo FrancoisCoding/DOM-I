@@ -39,16 +39,31 @@ const siteContent = {
 
 // Example: Update the img src for the logo
 // Images
-let logo = document.getElementById("logo-img");
+const logo = document.getElementById("logo-img");
 logo.src = siteContent["nav"]["img-src"]
 
-let ctaImg = document.getElementById("cta-img");
+const ctaImg = document.getElementById("cta-img");
 ctaImg.src = siteContent["cta"]["img-src"]
 
-let middleImg = document.getElementById("middle-img");
+const middleImg = document.getElementById("middle-img");
 middleImg.src = siteContent["main-content"]["middle-img-src"]
 
 // Headers
-let domText = document.querySelector(".cta-text h1")
-domText.textContent = "DOM Is Awesome";
-let headerText = document.querySelector("h4")
+const domText = document.querySelector(".cta-text h1").innerText = siteContent["cta"]["h1"]
+const headers = document.querySelectorAll("h4");
+headers[0].textContent = siteContent["main-content"]["features-h4"]
+headers[1].textContent = siteContent["main-content"]["about-h4"]
+headers[2].textContent = siteContent["main-content"]["services-h4"]
+headers[3].textContent = siteContent["main-content"]["product-h4"]
+headers[4].textContent = siteContent["main-content"]["vision-h4"]
+headers[5].textContent = siteContent["main-content"]["contact-h4"]
+
+
+// Nav
+const navText1 = document.querySelector("nav a:nth-child(2)").textContent = siteContent["nav"]["nav-item-1"]
+const navText2 = document.querySelector("nav a:nth-child(3)").textContent = siteContent["nav"]["nav-item-2"]
+const navText3 = document.querySelector("nav a:nth-child(4)").textContent = siteContent["nav"]["nav-item-3"]
+const navText4 = document.querySelector("nav a:nth-child(5)").textContent = siteContent["nav"]["nav-item-4"]
+const navText5 = document.querySelector("nav a:nth-child(6)").textContent = siteContent["nav"]["nav-item-5"]
+const navText6 = document.querySelector("nav a:nth-child(7)").textContent = siteContent["nav"]["nav-item-6"]
+
