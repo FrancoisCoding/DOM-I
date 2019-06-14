@@ -95,22 +95,22 @@ const navElement = document.getElementsByTagName("nav");
 
 // (iName) recives the nav bar item name
 let createNode = iName => {
-	const newNavItem = document.createElement("a");
-	newNavItem.innerHTML = iName;
+    const newNavItem = document.createElement("a");
+    newNavItem.innerHTML = iName;
     newNavItem.textContent = "Extra Link"
     newNavItem.style.color = "green"
     newNavItem.href = "#"
-	
-	return newNavItem
+
+    return newNavItem
 }
 let createNode2 = iName => {
-	const newNavItem = document.createElement("a");
-	newNavItem.innerHTML = iName;
+    const newNavItem = document.createElement("a");
+    newNavItem.innerHTML = iName;
     newNavItem.textContent = "Extra Link2"
     newNavItem.style.color = "green"
     newNavItem.href = "#"
-	
-	return newNavItem
+
+    return newNavItem
 }
 navElement[0].prepend(createNode("extraText"));
 navElement[0].appendChild(createNode2("extraText2"));
@@ -126,7 +126,7 @@ ctaElement[0].appendChild(colorButton)
 const navItems = document.getElementsByTagName("a").id = 'nav-links'
 
 function getRandomArbitrary(min, max) {
-  return Math.random() * (max - min) + min;
+    return Math.random() * (max - min) + min;
 }
 
 // Color and Size Switch
@@ -134,19 +134,19 @@ const colorArr = ['red', 'blue', 'aqua', 'orange', 'black', 'purple', 'violet', 
 const linkSwitch = document.getElementById("cButton1").onclick = function () {
     links[0].style.color = colorArr[Math.floor(Math.random() * 9)]
     links[0].style.fontSize = getRandomArbitrary(9, 17) + 'px'
-    
+
     links[1].style.color = colorArr[Math.floor(Math.random() * 9)]
     links[1].style.fontSize = getRandomArbitrary(9, 17) + 'px'
-    
+
     links[2].style.color = colorArr[Math.floor(Math.random() * 9)]
     links[2].style.fontSize = getRandomArbitrary(9, 17) + 'px'
-    
+
     links[3].style.color = colorArr[Math.floor(Math.random() * 9)]
     links[3].style.fontSize = getRandomArbitrary(9, 17) + 'px'
-    
+
     links[4].style.color = colorArr[Math.floor(Math.random() * 9)]
     links[4].style.fontSize = getRandomArbitrary(9, 17) + 'px'
-    
+
     links[5].style.color = colorArr[Math.floor(Math.random() * 9)]
     links[5].style.fontSize = getRandomArbitrary(9, 17) + 'px'
 }
