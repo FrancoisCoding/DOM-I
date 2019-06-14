@@ -15,7 +15,7 @@ const msTens = document.getElementById("msTens")
 msTens.textContent = 0
 
 
-//Buttons
+//Button Creation
 const startButton = document.createElement("button")
 startButton.textContent = 'Start'
 body[0].appendChild(startButton)
@@ -23,12 +23,14 @@ body[0].appendChild(startButton)
 const resetButton = document.createElement("button")
 resetButton.textContent = 'Reset'
 body[0].appendChild(resetButton)
-
+// Button Classes
 const button = document.getElementsByTagName("button")
 button[0].className = 'buttonClass'
 button[1].className = 'buttonClass'
-const buttonClass = document.getElementsByClassName('buttonClass')
+document.styleSheets[0].insertRule('button:hover { cursor: pointer; }', 0);
 
+const buttonClass = document.getElementsByClassName('buttonClass')
+// Button Styling
 buttonClass[0].style.marginTop = '1.3rem'
 buttonClass[0].style.fontSize = '2rem'
 buttonClass[1].style.marginTop = '1.3rem'
@@ -39,3 +41,62 @@ buttonClass[1].style.fontSize = '1.3rem'
 
 // Move Buttons Underneath Timer
 body[0].style.flexDirection = 'column'
+
+// Timer Function
+function Timer() {
+    var time = 0;
+    var interval;
+    var offset;
+    
+    function update() {
+        time += delta();
+        var formattedTime = timeFormatter(time);
+        console.log(formattedTime);
+    }
+    
+    function delta() {
+        var now = Date.now();
+        var timePassed = now - offset;
+        offset = now;
+        return timePassed;
+    }
+    
+    function timeFormatter(timeInMilliseconds){
+        var time = new Date(timeInMilliseconds)
+        var seconds = time.getSeconds().toString();
+        var milliseconds = time.getMilliseconds().toString();
+        
+        if(seconds.length < 2) {
+            seconds = '0' + seconds
+        }
+        if(seconds == 10.00) {
+            watch.stop()
+        }
+        if(milliseconds.length < 2) {
+            milliseconds = '0' + milliseconds
+        }
+        return seconds + '.' + milliseconds;
+    }
+    
+    this.isOn = false;
+    
+    this.start = function() {
+        if (!this.isOn) {
+            interval = setInterval(update, 10);
+            offset = Date.now();
+            this.isOn = true;
+        }
+    };
+    
+    this.stop = function() {
+        if (this.isOn) {
+            clearInterval(interval);
+            interval = null;
+            this.isOn = false;
+        }
+    };
+    
+    this.reset = function() {
+        time = 0;
+    };
+}
