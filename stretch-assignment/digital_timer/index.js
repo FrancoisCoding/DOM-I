@@ -1,3 +1,7 @@
+// Change Title of Page
+const title = document.getElementsByTagName("title")
+title[0].textContent = 'Digital Timer'
+
 // Move Timer to Middle of Page
 const body = document.getElementsByTagName("body")
 body[0].style.height = '36.5208rem'
@@ -54,17 +58,35 @@ body[0].style.flexDirection = 'column'
 const toggleBtn = document.getElementById('toggle')
 const resetBtn = document.getElementById('reset')
 
+var watch = new Timer(digitalTimer);
+
+toggleBtn.addEventListener('click', function () {
+    if (watch.isOn) {
+        watch.stop();
+        toggleBtn.textContent = 'Start';
+    } else {
+        watch.start();
+        toggleBtn.textContent = 'Stop';
+    }
+});
+
+resetBtn.addEventListener('click', function () {
+    watch.reset();
+});
 
 // Timer Function
-function Timer() {
+function Timer(elem) {
     var time = 0;
     var interval;
     var offset;
 
     function update() {
-        time += delta();
+        if (this.isOn) {
+            time += delta();
+        }
         var formattedTime = timeFormatter(time);
         console.log(formattedTime);
+        elem.textContent = formattedTime;
     }
 
     function delta() {
@@ -82,7 +104,7 @@ function Timer() {
         if (seconds.length < 2) {
             seconds = '0' + seconds
         }
-        if (seconds == 10.00) {
+        if (seconds == 10.000) {
             watch.stop()
         }
         if (milliseconds.length < 2) {
@@ -95,7 +117,7 @@ function Timer() {
 
     this.start = function () {
         if (!this.isOn) {
-            interval = setInterval(update, 10);
+            interval = setInterval(update.bind(this), 10);
             offset = Date.now();
             this.isOn = true;
         }
@@ -110,6 +132,9 @@ function Timer() {
     };
 
     this.reset = function () {
-        time = 0;
+        if (!this.isOn) {
+            time = 0;
+            update();
+        }
     };
 }
