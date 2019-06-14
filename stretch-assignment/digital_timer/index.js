@@ -26,11 +26,16 @@ body[0].appendChild(startButton)
 const resetButton = document.createElement("button")
 resetButton.textContent = 'Reset'
 body[0].appendChild(resetButton)
+
 // Button Classes
 const button = document.getElementsByTagName("button")
 button[0].className = 'buttonClass'
 button[1].className = 'buttonClass'
 document.styleSheets[0].insertRule('button:hover { cursor: pointer; }', 0);
+
+// Button ID's
+button[0].id = 'toggle'
+button[1].id = 'reset'
 
 const buttonClass = document.getElementsByClassName('buttonClass')
 // Button Styling
@@ -46,6 +51,9 @@ buttonClass[1].style.fontSize = '1.3rem'
 body[0].style.flexDirection = 'column'
 
 // Button Toggler
+const toggleBtn = document.getElementById('toggle')
+const resetBtn = document.getElementById('reset')
+
 
 // Timer Function
 function Timer() {
