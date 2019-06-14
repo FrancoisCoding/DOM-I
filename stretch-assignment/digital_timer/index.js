@@ -4,16 +4,19 @@ body[0].style.height = '36.5208rem'
 body[0].style.background = 'radial-gradient(circle, #fff, #ccc)'
 
 
-// Set Dashes to 0 for Start
-const secondsTens = document.getElementById("secondTens")
-secondsTens.textContent = 0
-const secondOnes = document.getElementById("secondOnes")
-secondOnes.textContent = 0
-const msHundreds = document.getElementById("msHundreds")
-msHundreds.textContent = 0
-const msTens = document.getElementById("msTens")
-msTens.textContent = 0
+// Remove Digits
+const digit = document.getElementsByClassName('digit')
+digit[0].style.display = 'none'
+digit[1].style.display = 'none'
+digit[2].style.display = 'none'
+digit[3].style.display = 'none'
+digit[4].style.display = 'none'
 
+// Add Digits
+const digitalTimer = document.createElement("h1")
+digitalTimer.textContent = '00 . 000'
+digitalTimer.style.fontSize = '3rem'
+body[0].prepend(digitalTimer)
 
 //Button Creation
 const startButton = document.createElement("button")
@@ -42,61 +45,63 @@ buttonClass[1].style.fontSize = '1.3rem'
 // Move Buttons Underneath Timer
 body[0].style.flexDirection = 'column'
 
+// Button Toggler
+
 // Timer Function
 function Timer() {
     var time = 0;
     var interval;
     var offset;
-    
+
     function update() {
         time += delta();
         var formattedTime = timeFormatter(time);
         console.log(formattedTime);
     }
-    
+
     function delta() {
         var now = Date.now();
         var timePassed = now - offset;
         offset = now;
         return timePassed;
     }
-    
-    function timeFormatter(timeInMilliseconds){
+
+    function timeFormatter(timeInMilliseconds) {
         var time = new Date(timeInMilliseconds)
         var seconds = time.getSeconds().toString();
         var milliseconds = time.getMilliseconds().toString();
-        
-        if(seconds.length < 2) {
+
+        if (seconds.length < 2) {
             seconds = '0' + seconds
         }
-        if(seconds == 10.00) {
+        if (seconds == 10.00) {
             watch.stop()
         }
-        if(milliseconds.length < 2) {
+        if (milliseconds.length < 2) {
             milliseconds = '0' + milliseconds
         }
         return seconds + '.' + milliseconds;
     }
-    
+
     this.isOn = false;
-    
-    this.start = function() {
+
+    this.start = function () {
         if (!this.isOn) {
             interval = setInterval(update, 10);
             offset = Date.now();
             this.isOn = true;
         }
     };
-    
-    this.stop = function() {
+
+    this.stop = function () {
         if (this.isOn) {
             clearInterval(interval);
             interval = null;
             this.isOn = false;
         }
     };
-    
-    this.reset = function() {
+
+    this.reset = function () {
         time = 0;
     };
 }
