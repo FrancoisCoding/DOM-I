@@ -12,3 +12,17 @@ const msHundreds = document.getElementById("msHundreds")
 msHundreds.textContent = 0
 const msTens = document.getElementById("msTens")
 msTens.textContent = 0
+
+
+
+//Buttons
+const startButton = document.createElement("button")
+startButton.textContent = 'Start'
+body[0].appendChild(startButton)
+
+//const stopButton = document.createElement("button")
+//stopButton.textContent = 'Stop'
+
+const resetButton = document.createElement("button")
+resetButton.textContent = 'Reset'
+body[0].appendChild(resetButton)
