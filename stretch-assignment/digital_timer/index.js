@@ -104,8 +104,9 @@ function Timer(elem) {
         if (seconds.length < 2) {
             seconds = '0' + seconds
         }
-        if (seconds == 10.000) {
+        if (seconds == 10) {
             watch.stop()
+            return seconds;
         }
         if (milliseconds.length < 2) {
             milliseconds = '0' + milliseconds
