@@ -115,3 +115,38 @@ let createNode2 = iName => {
 navElement[0].prepend(createNode("extraText"));
 navElement[0].appendChild(createNode2("extraText2"));
 
+const ctaElement = document.getElementsByClassName("cta-text")
+
+const colorButton = document.createElement("button")
+colorButton.textContent = "Link Color and Size Changer" // Be Prepared for FUN!!
+colorButton.style.height = "40px"
+colorButton.id = "cButton1"
+ctaElement[0].appendChild(colorButton)
+
+const navItems = document.getElementsByTagName("a").id = 'nav-links'
+
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+// Color and Size Switch
+const colorArr = ['red', 'blue', 'aqua', 'orange', 'black', 'purple', 'violet', 'grey', 'yellow']
+const linkSwitch = document.getElementById("cButton1").onclick = function () {
+    links[0].style.color = colorArr[Math.floor(Math.random() * 9)]
+    links[0].style.fontSize = getRandomArbitrary(9, 17) + 'px'
+    
+    links[1].style.color = colorArr[Math.floor(Math.random() * 9)]
+    links[1].style.fontSize = getRandomArbitrary(9, 17) + 'px'
+    
+    links[2].style.color = colorArr[Math.floor(Math.random() * 9)]
+    links[2].style.fontSize = getRandomArbitrary(9, 17) + 'px'
+    
+    links[3].style.color = colorArr[Math.floor(Math.random() * 9)]
+    links[3].style.fontSize = getRandomArbitrary(9, 17) + 'px'
+    
+    links[4].style.color = colorArr[Math.floor(Math.random() * 9)]
+    links[4].style.fontSize = getRandomArbitrary(9, 17) + 'px'
+    
+    links[5].style.color = colorArr[Math.floor(Math.random() * 9)]
+    links[5].style.fontSize = getRandomArbitrary(9, 17) + 'px'
+}
